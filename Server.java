@@ -44,6 +44,16 @@ public class Server
                 	  serverSocket.send(sendPacket);
                 	  count = count + 1;
                   }
+                  Thread.sleep(6000) // Wait one minute for all packets to come in
+                  finishedMsg = "-1x";
+                  finishedData = finishedMsg.getBytes();
+                  for(int i = 0; i < 30; i++)
+                  {
+                      DatagramPacket finishedPacket =
+                              new DatagramPacket(finishedData, finishedData.length, IPAddress, port); 
+                        Thread.sleep(1000); // sleep 1 second, sending 30 messages over 30 seconds
+                        serverSocket.send(finishedPacket);                   
+                  }
                   serverSocket.close();  
                   System.exit(0);                  
                }             

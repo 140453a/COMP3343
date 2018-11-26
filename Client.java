@@ -34,7 +34,14 @@ public class Client
     	  String modifiedSentence = new String(receivePacket.getData());
     	  //order[i] = Long.parseLong(modifiedSentence.trim());
     	  String[] split = modifiedSentence.split("x");
-    	  order[i] = Integer.parseInt(split[0]);
+        int parsed = Integer.parseInt(split[0]);
+
+        if(parsed == -1) // check for "finished" message.
+        {
+          continue;
+        }
+
+    	  order[i] = parsed;
     	  System.out.println(order[i]);
     		  
     	  System.out.println("FROM SERVER:" + modifiedSentence);
