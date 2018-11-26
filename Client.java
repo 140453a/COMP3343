@@ -1,8 +1,10 @@
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 
-class Client
+public class Client
 {
+   static final int MESSAGES = 10000;
    public static void main(String args[]) throws Exception
    {
       BufferedReader inFromUser =
@@ -22,9 +24,11 @@ class Client
       
       DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
       clientSocket.send(sendPacket);
-      
-      for(int i = 0; i < 10; i++) {
-    	  DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+      DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+
+      for(int i = 0; i < MESSAGES; i++) {
     	  clientSocket.receive(receivePacket);
       
     	  String modifiedSentence = new String(receivePacket.getData());
@@ -34,8 +38,9 @@ class Client
     	  System.out.println(order[i]);
     		  
     	  System.out.println("FROM SERVER:" + modifiedSentence);
+
       }
-      System.out.println("Final results: " + order.toString());
+      System.out.println("Final results: " + Arrays.toString(order));
       clientSocket.close(); 
    }
 }
