@@ -38,7 +38,7 @@ public class Server {
             for (int i = 0; i < MESSAGES; i++)
             {
                 String fill = Integer.toString(count) + "x";
-                for (int j = BYTE_SIZE; j > String.valueOf(fill).length(); j--)
+                for (int j = (BYTE_SIZE / 2); j > String.valueOf(fill).length(); j--)
                 {
                     fill = fill + "0";
                 }
