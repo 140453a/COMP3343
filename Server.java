@@ -11,7 +11,7 @@ import java.util.Random;
 
 
 public class Server {
-    static final int MESSAGES = 10000;
+    static final int MESSAGES = 100;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
     public static void main(String args[]) throws Exception {
