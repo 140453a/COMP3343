@@ -62,7 +62,7 @@ public class Server {
             {
                 DatagramPacket finishedPacket =
                 new DatagramPacket(finishedData, finishedData.length, IPAddress, port);
-                Thread.sleep(1000); // sleep 1 second, sending 30 messages over 30 seconds
+                Thread.sleep(100); // sleep 100 milisecond, sending 30 messages over 3 seconds
                 serverSocket.send(finishedPacket);
             }
             serverSocket.close();
