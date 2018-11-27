@@ -42,6 +42,7 @@ public class Server {
                 {
                     fill = fill + "0";
                 }
+                System.out.println("Fill is: " + fill);
                 sendData = fill.getBytes();
                 DatagramPacket sendPacket =
                 new DatagramPacket(sendData, sendData.length, IPAddress, port);
