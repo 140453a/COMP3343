@@ -14,6 +14,7 @@ public class Server {
     static final int MESSAGES = 10000;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
+    static final String ENDTRANSMISSION = "-1x000000000000000000000000000"
     public static void main(String args[]) throws Exception {
         DatagramSocket serverSocket = new DatagramSocket(PORT_NUMBER);
         byte[] receiveData = new byte[BYTE_SIZE];
@@ -24,7 +25,8 @@ public class Server {
 
         while (true)
         {
-            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            DatagramPacket receivePacket = new DatagramPacket(receiveData,
+                receiveData.length);
             serverSocket.receive(receivePacket);
 
             String sentence = new String(receivePacket.getData());
@@ -51,8 +53,8 @@ public class Server {
                 serverSocket.send(sendPacket);
                 count = count + 1;
             }
-            Thread.sleep(60000); // Wait one minute for all packets to come in
-            String finishedMsg = "-1x000000000000000000000000000";
+            Thread.sleep(1000); // Wait 10 seconds for all packets to come in
+            String finishedMsg = ENDTRANSMISSION;
             finishedData = finishedMsg.getBytes(StandardCharsets.US_ASCII);
             for (int i = 0; i < 30; i++) 
             {
