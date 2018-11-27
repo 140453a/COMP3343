@@ -28,7 +28,7 @@ public class Client
         String sentence = inFromUser.readLine();
 
         sendData = sentence.getBytes();
-        clientSocket.setSoTimeout(60000);
+        clientSocket.setSoTimeout(80000);
 
         DatagramPacket sendPacket = 
         new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
@@ -64,10 +64,14 @@ public class Client
             }
         } catch (SocketException e)
           {
-              System.err.println("Timed out after 60 seconds...
-                Probably your first message got lost: " + e);    
+              System.err.println("Timed out after 60 seconds..." +
+                " Probably your first message got lost: " + e);
+                clientSocket.close();
+                System.exit(1);    
           }
         System.out.println("Final results: " + Arrays.toString(order));
+        System.out.println("Array length: " + order.length);
+        System.out.println("Percent arrived: " + order.length / MESSAGES * 100 + "%");
         clientSocket.close(); 
     }
 }
