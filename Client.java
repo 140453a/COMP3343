@@ -8,6 +8,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 
 public class Client
 {
@@ -20,14 +21,14 @@ public class Client
 
         DatagramSocket clientSocket = new DatagramSocket();
 
-        InetAddress IPAddress = InetAddress.getByName("localhost");
+        InetAddress IPAddress = InetAddress.getByName("165.227.159.60");
 
         byte[] sendData = new byte[30];
         byte[] receiveData = new byte[30];
-        long[] order = new long[10000];
+        long[] order = new long[100];
         String sentence = inFromUser.readLine();
 
-        sendData = sentence.getBytes();
+        sendData = sentence.getBytes(StandardCharsets.US_ASCII);
         clientSocket.setSoTimeout(80000);
 
         DatagramPacket sendPacket = 
@@ -68,6 +69,12 @@ public class Client
                 " Probably your first message got lost: " + e);
                 clientSocket.close();
                 System.exit(1);    
+          }
+          for (int j = 0; j < 100; j++){
+            if (!(order[j] == j)){
+                System.out.println(j + " out of order!");
+                break;
+            }
           }
         System.out.println("Final results: " + Arrays.toString(order));
         System.out.println("Array length: " + order.length);

@@ -11,7 +11,7 @@ import java.util.Random;
 
 
 public class Server {
-    static final int MESSAGES = 100;
+    static final int MESSAGES = 10000;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
     public static void main(String args[]) throws Exception {
@@ -38,12 +38,12 @@ public class Server {
             for (int i = 0; i < MESSAGES; i++)
             {
                 String fill = Integer.toString(count) + "x";
-                for (int j = BYTE_SIZE; j > String.valueOf(fill).length(); j--)
+                for (int j = BYTE_SIZE; j >= String.valueOf(fill).length(); j--)
                 {
                     fill = fill + "0";
                 }
                 System.out.println("Fill is: " + fill);
-                sendData = fill.getBytes();
+                sendData = fill.getBytes(StandardCharsets.US_ASCII);
                 DatagramPacket sendPacket =
                 new DatagramPacket(sendData, sendData.length, IPAddress, port);
 
@@ -52,8 +52,8 @@ public class Server {
                 count = count + 1;
             }
             Thread.sleep(60000); // Wait one minute for all packets to come in
-            String finishedMsg = "-1x";
-            finishedData = finishedMsg.getBytes();
+            String finishedMsg = "-1x000000000000000000000000000";
+            finishedData = finishedMsg.getBytes(StandardCharsets.US_ASCII);
             for (int i = 0; i < 30; i++) 
             {
                 DatagramPacket finishedPacket =
