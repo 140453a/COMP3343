@@ -10,11 +10,12 @@ import java.net.*;
 import java.util.Random;
 import java.nio.charset.StandardCharsets;
 
+
 public class Server {
-    static final int MESSAGES = 100;
+    static final int MESSAGES = 10000;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
-    static final String ENDTRANSMISSION = "-1x000000000000000000000000000";
+    static final String ENDTRANSMISSION = "-1x000000000000000000000000000"
     public static void main(String args[]) throws Exception {
         DatagramSocket serverSocket = new DatagramSocket(PORT_NUMBER);
         byte[] receiveData = new byte[BYTE_SIZE];

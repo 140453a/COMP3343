@@ -76,8 +76,8 @@ public class Client
         {
             if(!(order[j - 1] == j) && flag == false)
             {
-            System.out.println(j + " is out of order!");
-            flag = true;
+                System.out.println(j + " is out of order or missing!");
+                flag = true;
             }
             if(order[j - 1] == 0)
             {
@@ -87,9 +87,8 @@ public class Client
         }
         System.out.println("Final results: " + Arrays.toString(order));
         System.out.println("Array length: " + order.length);
-
-        System.out.println("Percent arrived: " + (order.length - missingPackets)
-                / MESSAGES * 100 + "%");
+        System.out.println("Missing packets: " + missingPackets);
+        System.out.println("Percent arrived: " + (((MESSAGES - missingPackets) / 100.0 ) * 100) + "%");
         clientSocket.close(); 
         
     }
