@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 
 public class Server {
-    static final int MESSAGES = 10000;
+    static final int MESSAGES = 100;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
     static final String ENDTRANSMISSION = "-1x0";
