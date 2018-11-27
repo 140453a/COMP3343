@@ -8,7 +8,7 @@
 
 import java.net.*;
 import java.util.Random;
-
+import java.nio.charset.StandardCharsets;
 
 public class Server {
     static final int MESSAGES = 10000;
