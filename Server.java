@@ -51,7 +51,7 @@ public class Server {
                 DatagramPacket sendPacket =
                 new DatagramPacket(sendData, sendData.length, IPAddress, port);
 
-                //Thread.sleep(2);
+                Thread.sleep(2);
                 serverSocket.send(sendPacket);
                 count = count + 1;
             }
