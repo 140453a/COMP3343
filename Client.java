@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Client
 {
-    static final int MESSAGES = 10000;
+    static final int MESSAGES = 100000;
     public static void main(String args[]) throws Exception
     {
         BufferedReader inFromUser =
@@ -60,7 +60,7 @@ public class Client
                 order[index] = parsed;
                 System.out.println(order[index]);
 
-                System.out.println("FROM SERVER:" + modifiedSentence);
+                //System.out.println("FROM SERVER:" + modifiedSentence);
                 index = index + 1;
             }
         } catch (SocketException e)
@@ -88,7 +88,7 @@ public class Client
         System.out.println("Final results: " + Arrays.toString(order));
         System.out.println("Array length: " + order.length);
         System.out.println("Missing packets: " + missingPackets);
-        System.out.println("Percent arrived: " + (((MESSAGES - missingPackets) / 100.0 ) * 100) + "%");
+        System.out.println("Percent arrived: " + (((MESSAGES - missingPackets) / (double)MESSAGES ) * 100) + "%");
         clientSocket.close(); 
         
     }

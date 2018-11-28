@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 
 public class Server {
-    static final int MESSAGES = 10000;
+    static final int MESSAGES = 100000;
     static final int BYTE_SIZE = 30;
     static final int PORT_NUMBER = 9876;
     static final String ENDTRANSMISSION = "-1x0";
@@ -46,7 +46,7 @@ public class Server {
                 {
                     fill = fill + "0";
                 }
-                System.out.println("Fill is: " + fill);
+                //System.out.println("Fill is: " + fill);
                 sendData = fill.getBytes(StandardCharsets.US_ASCII);
                 DatagramPacket sendPacket =
                 new DatagramPacket(sendData, sendData.length, IPAddress, port);
