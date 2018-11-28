@@ -12,7 +12,7 @@ class UDPClient
 
 
         DatagramSocket clientSocket = new DatagramSocket();
-        InetAddress IpAddress = InetAddress.getByName("localhost");
+        InetAddress IpAddress = InetAddress.getByName("165.227.159.60");
 
         byte[] sendData = new byte[MAX_SIZE];
 
