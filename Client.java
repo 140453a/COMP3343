@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Client
 {
-    static final int MESSAGES = 100;
+    static final int MESSAGES = 10000;
     public static void main(String args[]) throws Exception
     {
         BufferedReader inFromUser =
