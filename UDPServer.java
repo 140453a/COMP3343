@@ -44,14 +44,18 @@ class UDPServer
 
             
             System.out.println("\n Packet length: " + recPacket.getLength());
-            
+            try
+            { 
             // Converting the byte array to a string to print it.
             String modifiedSentence = new String(recPacket.getData());
             System.out.println(modifiedSentence.substring(0, recPacket.getLength()));
 
             // Writing the data to the file
             fos.write(recPacket.getData(), 0, recPacket.getLength());
-
+            } catch (StringIndexOutOfBoundsException e)
+            {
+                ; // The packet was empty
+            }
             //Flushing old data
             fos.flush(); 
             System.out.println("\nPacket " + ++count + " written to file\n");
