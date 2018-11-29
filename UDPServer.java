@@ -46,15 +46,15 @@ class UDPServer
             System.out.println("\n Packet length: " + recPacket.getLength());
             try
             { 
-            // Converting the byte array to a string to print it.
-            String modifiedSentence = new String(recPacket.getData());
-            System.out.println(modifiedSentence.substring(0, recPacket.getLength()));
+                // Converting the byte array to a string to print it.
+                String modifiedSentence = new String(recPacket.getData());
+                System.out.println(modifiedSentence.substring(0, recPacket.getLength()));
 
-            // Writing the data to the file
-            fos.write(recPacket.getData(), 0, recPacket.getLength());
+                // Writing the data to the file
+                fos.write(recPacket.getData(), 0, recPacket.getLength());
             } catch (StringIndexOutOfBoundsException e)
             {
-                System.out.println("This packet was empty or corrupted!");
+                System.out.println("This packet has a non-ascii character");
             }
             //Flushing old data
             fos.flush(); 
