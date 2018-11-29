@@ -56,6 +56,7 @@ class UDPClient
 
         // Calculates the number of packets needed to send the file
         int packetCount = fileLength / MAX_SIZE;
+        int savedPacketCount = packetCount;
 
 
 
@@ -122,7 +123,7 @@ class UDPClient
             clientSocket.send(remainderPacket);
         }
         System.out.println("Number of packets (not including remainder) : " +
-                            packetCount);
+                            savedPacketCount);
         clientSocket.close();
     }
 }
