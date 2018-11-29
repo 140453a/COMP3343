@@ -6,6 +6,7 @@
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 
 class UDPServer
 {
@@ -43,10 +44,12 @@ class UDPServer
             System.out.println("\n Packet length: " + recPacket.getLength());
             
             // Converting the byte array into a string and writing it
-            String modifiedSentence = new String(recPacket.getData());
+            //String modifiedSentence = new String(recPacket.getData());
             //out.write(modifiedSentence, 0, recPacket.getLength());
-            byte[] recData = recPacket.getData();
-            fos.write(recData);           
+
+            fos.write(recPacket.getData());
+
+            //Flushing old data
             fos.flush(); 
             System.out.println("\nPacket " + ++count + " written to file\n");
             
