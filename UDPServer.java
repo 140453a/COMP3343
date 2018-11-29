@@ -31,6 +31,8 @@ class UDPServer
         {
             // Creating the receiving packet which the socket will fill with the received data
             DatagramPacket recPacket = new DatagramPacket(Data, Data.length);
+
+            // Times out after 40 seconds, ending the program
             try 
             {
                 serverSocket.receive(recPacket);
@@ -43,11 +45,11 @@ class UDPServer
             
             System.out.println("\n Packet length: " + recPacket.getLength());
             
-            // Converting the byte array into a string and writing it
+            // Converting the byte array to a string to print it.
             String modifiedSentence = new String(recPacket.getData());
-            System.out.println(modifiedSentence);
-            //out.write(modifiedSentence, 0, recPacket.getLength());
+            System.out.println(modifiedSentence.substring(0, recPacket.getLength()));
 
+            // Writing the data to the file
             fos.write(recPacket.getData(), 0, recPacket.getLength());
 
             //Flushing old data
