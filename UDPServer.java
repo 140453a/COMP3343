@@ -44,7 +44,8 @@ class UDPServer
             System.out.println("\n Packet length: " + recPacket.getLength());
             
             // Converting the byte array into a string and writing it
-            //String modifiedSentence = new String(recPacket.getData());
+            String modifiedSentence = new String(recPacket.getData());
+            System.out.println(modifiedSentence);
             //out.write(modifiedSentence, 0, recPacket.getLength());
 
             fos.write(recPacket.getData());
