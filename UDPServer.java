@@ -54,7 +54,7 @@ class UDPServer
             fos.write(recPacket.getData(), 0, recPacket.getLength());
             } catch (StringIndexOutOfBoundsException e)
             {
-                ; // The packet was empty
+                System.out.println("This packet was empty or corrupted!");
             }
             //Flushing old data
             fos.flush(); 
