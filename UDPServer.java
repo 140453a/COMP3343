@@ -48,7 +48,7 @@ class UDPServer
             System.out.println(modifiedSentence);
             //out.write(modifiedSentence, 0, recPacket.getLength());
 
-            fos.write(recPacket.getData());
+            fos.write(recPacket.getData(), 0, recPacket.getLength());
 
             //Flushing old data
             fos.flush(); 
