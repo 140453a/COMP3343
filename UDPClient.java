@@ -8,6 +8,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.Arrays;
+import java.util.Scanner;
 
 class UDPClient
 {
@@ -29,10 +30,15 @@ class UDPClient
         // by the DatagramPacket and socket.
         byte[] sendData = new byte[MAX_SIZE];
 
-
         // Setting up File IO
-        String filePath = "testSend.txt";
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the name of your file: ");
+        String filePath = scan.nextLine();
+
         File file = new File(filePath);
+       
+
+        // Using a FIS to read file in byte chunks
         FileInputStream fis = new FileInputStream(file);
 
 

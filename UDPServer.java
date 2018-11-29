@@ -23,8 +23,7 @@ class UDPServer
         int count = 0;
         
         // Setting up File IO 
-        FileWriter file = new FileWriter("testResults.txt");
-        PrintWriter out = new PrintWriter(file);
+        FileOutputStream fos = new FileOutputStream("testResults.txt");
 
         // The loop that receives all the packets from  the client
         while(true)
@@ -45,12 +44,12 @@ class UDPServer
             
             // Converting the byte array into a string and writing it
             String modifiedSentence = new String(recPacket.getData());
-            out.write(modifiedSentence, 0, recPacket.getLength());
-            
+            //out.write(modifiedSentence, 0, recPacket.getLength());
+            byte[] recData = recPacket.getData();
+            fos.write(recData);            
             System.out.println("\nPacket " + ++count + " written to file\n");
             
-            // clearing out for the next loop
-            out.flush();
+
         }
     }
 }
