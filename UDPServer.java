@@ -46,7 +46,8 @@ class UDPServer
             String modifiedSentence = new String(recPacket.getData());
             //out.write(modifiedSentence, 0, recPacket.getLength());
             byte[] recData = recPacket.getData();
-            fos.write(recData);            
+            fos.write(recData);           
+            fos.flush(); 
             System.out.println("\nPacket " + ++count + " written to file\n");
             
 
