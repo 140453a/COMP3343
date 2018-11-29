@@ -15,6 +15,10 @@ class UDPServer
     {
         // Server socket is initialized with previously agreed-upon port number
         DatagramSocket serverSocket = new DatagramSocket(PORT_NUMBER);
+
+        // Sets the server to time out after 40 seconds, stopping loop.
+        serverSocket.setSoTimeout(40000)
+
         byte[] Data = new byte[BYTE_SIZE];
         int count = 0;
         
@@ -27,14 +31,25 @@ class UDPServer
         {
             // Creating the receiving packet which the socket will fill with the received data
             DatagramPacket recPacket = new DatagramPacket(Data, Data.length);
-            serverSocket.receive(recPacket);
+            try 
+            {
+                serverSocket.receive(recPacket);
+            } catch (SocketTimeoutException e) {
+                System.err.println("Timed out, the client is done sending.");
+                serverSocket.close();
+                break;
+            }
+
             
             System.out.println("\n Packet length: " + recPacket.getLength());
             
+            // Converting the byte array into a string and writing it
             String modifiedSentence = new String(recPacket.getData());
             out.write(modifiedSentence, 0, recPacket.getLength());
             
             System.out.println("\nPacket " + ++count + " written to file\n");
+            
+            // clearing out for the next loop
             out.flush();
         }
     }
