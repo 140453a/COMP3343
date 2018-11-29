@@ -10,7 +10,7 @@ import java.net.*;
 class UDPServer
 {
     static final int PORT_NUMBER = 9876;
-    static final int BYTE_SIZE = 1024;
+    static final int BYTE_SIZE = 32;
     public static void main(String args[]) throws IOException
     {
         // Server socket is initialized with previously agreed-upon port number

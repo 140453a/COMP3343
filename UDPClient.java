@@ -12,7 +12,7 @@ import java.util.Arrays;
 class UDPClient
 {
     static final int serverPort = 9876;
-    static final int MAX_SIZE = 1024;
+    static final int MAX_SIZE = 32;
     public static void main(String args[]) throws SocketException, IOException
     {
         int count = 0;
